@@ -88,6 +88,11 @@ AS_IF([ test "x$APR" != "x" -a -x "$APR" ],[
 	AC_MSG_FAILURE(["useable apr-1-config not found - please use --with-apr=/path/to/apr-1-config"])
 )
 
+AS_IF([ $APXS -q -v HTTPD_VERSION | grep ^2.2 ],
+	AC_MSG_FAILURE(["Apache 2.2 is not supported"]),
+	AC_MSG_NOTICE(["Compatible Apache release found (2.4 and later)"])
+)
+
 # Checks for libraries.
 
 
